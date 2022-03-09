@@ -1,87 +1,81 @@
-<html lang="ar" dir="rtl">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.rtl.css">
-    <link rel="stylesheet" href="css/s24.css">
+<?php
+  include "database.php";
+$porsesh= $db->query("SELECT * FROM question2 WHERE id=1");
+$porsesh = $porsesh->fetch_assoc();
+$pasokh_ha = $db-> query("SELECT * FROM answers WHERE quistion_id = 1");
 
-</head>
-<body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Link</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
-        </li>
-      </ul>
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
-    </div>
-  </div>
-</nav>
-<div class="row mt-5">
-    <div class="card">
-  <div class="card-header">
-      سوال 1 از 24
-  </div>
-  <div class="card-body">
-      <p>
-          کدام زبان برنام نویسی بهتر است ؟
-      </p>  
-      <form>
-     <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-        <label class="form-check-label" for="flexRadioDefault1">
-            پیاتون
-        </label>
+
+?>
+  
+<html lang="fa" dir="rtl">
+    <head>
+        <meta charset="utf-8">        
+        <link href="CSS\bootstrap.rtl.css" rel="stylesheet">
+        <link href="style.css" rel="stylesheet">
+
+        <title>آزمونک</title>
+    </head>
+
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark "id="iid">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">
+                </a>
+                <a class="navbar-brand">آزمونک</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="index.php">صفحه اصلی</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="#"> آزمون های غیر</a>
+                        </li>
+                    </ul>
+                    <form class="d-flex">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-danger" type="submit">Search</button>
+                    </form>
+                </div>
+            </div>
+        </nav>                 
+
+        <div class="container">
+            <div class="row mt-5">
+                <div class="col">
+                    <div class="card bg-dark text-light">
+                        <h5 class="card-header">سوال
+                        <?php echo $porsesh["id"]; ?>
+                        از
+                        </h5>
+                        
+                        <div class="card-body">
+                            <p class="card-text">
+                            <?php echo $porsesh["First"]; ?>
+                            </p>
+                            <form action="process.php" method="post">
+                                <input type="hidden" name="question" value="">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="answer" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    خواجه نظام الملک
+                                    </label>
+                                    <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="answer" id="flexRadioDefault1">
+                                    <label class="form-check-label" for="flexRadioDefault1">
+                                    خواجه نصیرالدین طوس
+                                    </label>
+                                </div>
+                                <button type="sumbit" class="btn btn-danger">بعدی</button>
+                            </form>
+                        
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
-        <label class="form-check-label" for="flexRadioDefault2">
-           html
-     </label>
-      </div>
-      <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
-        <label class="form-check-label" for="flexRadioDefault1">
-            js
-        </label>
-        </div>
-        <div class="form-check">
-        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault2" >
-        <label class="form-check-label" for="flexRadioDefault2">
-            css
-     </label>
-      </div>
-        <button type="submit" class="btn btn-primary">بعدی</button>
-     </form>  
-  </div>
-</div>
-    </div>
-</div>
-</body>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="bootstrap\bootstrap.js"></script>
+    </body>
 </html>

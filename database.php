@@ -5,4 +5,8 @@ if($db->connect_error)
     echo"ای وای ای وای";
 
 }
+else
+{
+    $db->query("SET CHARACTER SET utf8");
+}
 ?>
